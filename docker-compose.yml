@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # 后端服务
+  backend:
+    build: ./backend
+    container_name: raffle-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - ./backend/raffle.db:/app/raffle.db
+    environment:
+      - DATABASE_URL=sqlite:///./raffle.db
+    networks:
+      - raffle-network
+    restart: unless-stopped
+
+  # 前端服务
+  frontend:
+    build: ./frontend
+    container_name: raffle-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - raffle-network
+    restart: unless-stopped
+
+networks:
+  raffle-network:
+    driver: bridge
+
+volumes:
+  raffle-db:

@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  # 后端服务
+  backend:
+    build: ./backend
+    container_name: raffle-backend-prod
+    expose:
+      - "8000"
+    volumes:
+      - raffle-db:/app/data
+    environment:
+      - DATABASE_URL=sqlite:///./data/raffle.db
+    networks:
+      - raffle-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # 前端构建服务
+  frontend-builder:
+    build: ./frontend
+    container_name: raffle-frontend-builder
+    volumes:
+      - frontend-dist:/app/dist
+    command: ["npm", "run", "build"]
+    networks:
+      - raffle-network
+
+  # Nginx反向代理（用于生产环境）
+  nginx:
+    image: nginx:alpine
+    container_name: raffle-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/ssl:/etc/nginx/ssl
+      - frontend-dist:/usr/share/nginx/html
+    depends_on:
+      - backend
+      - frontend-builder
+    networks:
+      - raffle-network
+    restart: unless-stopped
+
+networks:
+  raffle-network:
+    driver: bridge
+
+volumes:
+  raffle-db:
+  frontend-dist:
