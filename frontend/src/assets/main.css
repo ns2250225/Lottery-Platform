@@ -1,0 +1,217 @@
+:root {
+  --nb-primary: #FFE600;
+  --nb-secondary: #884DFF;
+  --nb-success: #00E054;
+  --nb-danger: #FF2E2E;
+  --nb-info: #40E0D0;
+  --nb-black: #000000;
+  --nb-white: #FFFFFF;
+  --nb-bg: #e0e0e0;
+  --nb-border: 3px solid var(--nb-black);
+  --nb-shadow: 6px 6px 0px var(--nb-black);
+  --nb-shadow-hover: 2px 2px 0px var(--nb-black);
+  --nb-radius: 0px;
+  --nb-font: 'Courier New', Courier, monospace; /* Monospace fits the raw brutalist vibe */
+}
+
+body {
+  background-color: var(--nb-bg);
+  font-family: var(--nb-font);
+  color: var(--nb-black);
+  margin: 0;
+  padding: 0;
+  background-image: radial-gradient(var(--nb-black) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Element Plus Overrides */
+
+/* Button */
+.el-button {
+  border: var(--nb-border) !important;
+  border-radius: var(--nb-radius) !important;
+  box-shadow: var(--nb-shadow) !important;
+  font-weight: 900 !important;
+  color: var(--nb-black) !important;
+  transition: all 0.1s ease !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  height: auto !important;
+  padding: 10px 20px !important;
+}
+
+.el-button:hover, .el-button:focus {
+  transform: translate(4px, 4px);
+  box-shadow: var(--nb-shadow-hover) !important;
+  border-color: var(--nb-black) !important;
+  color: var(--nb-black) !important;
+}
+
+.el-button:active {
+  transform: translate(6px, 6px);
+  box-shadow: none !important;
+}
+
+.el-button--primary {
+  background-color: var(--nb-primary) !important;
+}
+
+.el-button--success {
+  background-color: var(--nb-success) !important;
+}
+
+.el-button--danger {
+  background-color: var(--nb-danger) !important;
+}
+
+.el-button--info {
+  background-color: var(--nb-info) !important;
+}
+
+.el-button--default {
+  background-color: var(--nb-white) !important;
+}
+
+.el-button.is-text {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+.el-button.is-text:hover {
+  transform: none !important;
+  color: var(--nb-secondary) !important;
+  background: transparent !important;
+}
+
+/* Card */
+.el-card {
+  border: var(--nb-border) !important;
+  border-radius: var(--nb-radius) !important;
+  box-shadow: var(--nb-shadow) !important;
+  background-color: var(--nb-white) !important;
+  overflow: visible !important;
+  margin-bottom: 24px;
+  color: var(--nb-black) !important;
+}
+
+.el-card__header {
+  border-bottom: var(--nb-border) !important;
+  background-color: #f8f8f8;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Inputs */
+.el-input__wrapper, .el-textarea__inner {
+  border: var(--nb-border) !important;
+  border-radius: var(--nb-radius) !important;
+  box-shadow: none !important;
+  background-color: var(--nb-white) !important;
+  padding: 8px !important;
+}
+
+.el-input__wrapper:hover, .el-textarea__inner:hover {
+  background-color: #fffbe6;
+}
+
+.el-input__wrapper.is-focus, .el-textarea__inner:focus {
+  background-color: #fff;
+  box-shadow: 4px 4px 0px var(--nb-black) !important;
+}
+
+/* Menu/Header */
+.el-menu {
+  border-bottom: none !important;
+  background-color: transparent !important;
+}
+
+.el-menu-item {
+  color: var(--nb-black) !important;
+  font-weight: bold;
+  border-right: var(--nb-border);
+  margin-right: -3px; /* Collapse borders */
+}
+
+.el-menu-item:hover, .el-menu-item:focus {
+  background-color: var(--nb-primary) !important;
+  color: var(--nb-black) !important;
+}
+
+.el-menu-item.is-active {
+  background-color: var(--nb-black) !important;
+  color: var(--nb-primary) !important;
+  border-bottom: none !important;
+}
+
+/* Tag */
+.el-tag {
+  border: 2px solid var(--nb-black) !important;
+  border-radius: var(--nb-radius) !important;
+  color: var(--nb-black) !important;
+  font-weight: bold;
+  box-shadow: 2px 2px 0px var(--nb-black);
+}
+
+.el-tag--success { background-color: var(--nb-success) !important; }
+.el-tag--warning { background-color: var(--nb-primary) !important; }
+.el-tag--danger { background-color: var(--nb-danger) !important; }
+.el-tag--info { background-color: #ddd !important; }
+
+/* Table */
+.el-table {
+  --el-table-border-color: var(--nb-black);
+  --el-table-header-bg-color: var(--nb-primary);
+  border: var(--nb-border) !important;
+  background-color: transparent !important;
+}
+
+.el-table th.el-table__cell {
+  background-color: var(--nb-primary) !important;
+  color: var(--nb-black) !important;
+  border-bottom: var(--nb-border) !important;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.el-table td.el-table__cell {
+  border-bottom: 2px solid var(--nb-black) !important;
+}
+
+.el-table--enable-row-hover .el-table__body tr:hover > td.el-table__cell {
+  background-color: #fffbe6 !important;
+}
+
+/* Dialog */
+.el-dialog {
+  border: var(--nb-border) !important;
+  border-radius: var(--nb-radius) !important;
+  box-shadow: 10px 10px 0px var(--nb-black) !important;
+}
+
+.el-dialog__header {
+  border-bottom: var(--nb-border) !important;
+  background-color: var(--nb-primary);
+  margin-right: 0 !important;
+  padding: 20px !important;
+}
+
+.el-dialog__title {
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--nb-black) !important;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-shadow: 3px 3px 0px var(--nb-secondary);
+}

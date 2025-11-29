@@ -526,19 +526,25 @@ defineExpose({
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: 900;
+  font-size: 1.2rem;
 }
 
 .action-buttons {
-  margin-top: 20px;
+  margin-top: 30px;
   text-align: center;
+  padding: 20px;
+  border: 2px dashed var(--nb-black);
+  background-color: #f0f0f0;
 }
 
 .action-buttons .el-button {
-  margin: 0 10px;
+  margin: 0 15px;
+  min-width: 120px;
 }
 
 .dialog-footer {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 </style>

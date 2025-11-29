@@ -237,163 +237,51 @@ const submitForm = async () => {
 
 <style scoped>
 .create-raffle-view {
-  max-width: none;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100vh;
-  background-color: transparent;
-}
-
-.create-raffle-view .el-card {
-  width: 100%;
-  margin: 0;
-  min-height: 100vh;
-  border-radius: 0;
-  box-shadow: none;
-  border: none;
-  background-color: transparent;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.raffle-form {
-  margin-bottom: 30px;
-  width: 100%;
-}
-
-.raffle-form .el-form-item {
-  width: 100%;
-  margin-bottom: 22px;
-}
-
-.raffle-form .el-form-item__content {
-  width: 100%;
-  flex: 1;
-}
-
-.raffle-form .el-input,
-.raffle-form .el-textarea,
-.raffle-form .el-date-editor {
-  width: 100% !important;
-  max-width: 100% !important;
-}
-
-/* 调整奖品设置区域 */
-.prize-item {
-  margin-bottom: 20px;
-}
-
-.prize-item .el-card {
-  width: 100%;
-}
-
-.prize-item .el-row {
-  width: 100%;
-}
-
-.prize-item .el-col {
-  padding: 0 10px;
-}
-
-.prize-item .el-form-item {
-  width: 100%;
-}
-
-.prize-item .el-input,
-.prize-item .el-input-number {
-  width: 100% !important;
-}
-
-/* 调整整体内容区域 */
-.el-card__body {
-  padding: 20px 0;
-  width: 100%;
-  max-width: none;
-}
-
-/* 增加表单项宽度 */
-.raffle-form .el-form-item__content {
-  width: 100%;
-  flex: 1;
-  max-width: 100%;
-}
-
-/* 调整奖品设置的三列布局 */
-.prize-item .el-col {
-  padding: 0 2px;
-}
-
-.prize-item .el-row {
-  width: 100%;
-  margin: 0;
-}
-
-/* 确保所有输入框占满容器 */
-.el-input,
-.el-textarea,
-.el-date-editor,
-.el-input-number {
-  width: 100% !important;
-}
-
-/* 确保表单项占满容器宽度 */
-.raffle-form .el-form-item {
-  width: 100%;
-  margin-right: 0;
-}
-
-/* 调整奖品卡片宽度 */
-.prize-item .el-card {
-  width: 100%;
-  margin: 0;
-}
-
-/* 调整奖品表单项 */
-.prize-item .el-form-item {
-  margin-bottom: 18px;
-}
-
-.form-actions {
-  margin-top: 30px;
-  text-align: center;
+  font-weight: 900;
+  font-size: 1.2rem;
 }
 
 .section-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin: 30px 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--nb-black);
 }
 
 .section-title h3 {
   margin: 0;
-}
-
-.empty-prizes {
-  margin-bottom: 20px;
-}
-
-.prize-item {
-  margin-bottom: 20px;
+  font-size: 1.2rem;
+  font-weight: 900;
 }
 
 .prize-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: bold;
 }
 
 .form-actions {
-  margin-top: 30px;
-  text-align: center;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
-.form-actions .el-button {
-  margin: 0 10px;
+.empty-prizes {
+  border: 2px dashed var(--nb-black);
+  border-radius: var(--nb-radius);
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
 }
 </style>

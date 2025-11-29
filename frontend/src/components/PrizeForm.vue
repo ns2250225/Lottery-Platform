@@ -163,14 +163,18 @@ const removePrize = (index: number) => {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: 900;
+  font-size: 1.2rem;
 }
 
 .empty-state {
   margin-top: 20px;
+  border: 2px dashed var(--nb-black);
+  border-radius: var(--nb-radius);
 }
 
 .dialog-footer {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 </style>

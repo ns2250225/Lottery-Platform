@@ -1,6 +1,6 @@
 <template>
   <div class="layout-footer">
-    <el-divider />
+    <!-- Removed el-divider as we have a border-top now -->
     <div class="footer-content">
       <p>&copy; 2023 抽奖应用. All rights reserved.</p>
       <p>
@@ -21,21 +21,27 @@
 <style scoped>
 .layout-footer {
   width: 100%;
-  padding: 20px 0;
+  padding: 40px 0;
+  background-color: var(--nb-primary);
+  border-top: var(--nb-border);
+  margin-top: 40px;
 }
 
 .footer-content {
   text-align: center;
-  color: #909399;
-  font-size: 14px;
+  color: var(--nb-black);
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .footer-content p {
-  margin: 5px 0;
+  margin: 10px 0;
 }
 
 .separator {
   margin: 0 10px;
-  color: #dcdfe6;
+  color: var(--nb-black);
+  font-weight: 900;
 }
 </style>

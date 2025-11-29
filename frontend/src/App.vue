@@ -87,14 +87,12 @@ updateActiveIndex()
 }
 
 .app-header {
-  background: linear-gradient(135deg, #409eff 0%, #1890ff 100%);
-  color: white;
   padding: 0;
-  box-shadow: 0 4px 20px rgba(64, 158, 255, 0.3);
-  border-bottom: 3px solid rgba(255, 255, 255, 0.2);
   position: sticky;
   top: 0;
   z-index: 1000;
+  background-color: var(--nb-white);
+  border-bottom: var(--nb-border) !important;
 }
 
 .header-content {
@@ -109,146 +107,62 @@ updateActiveIndex()
 .app-title {
   margin-right: 40px;
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 900;
   display: flex;
   align-items: center;
-  color: white;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  white-space: nowrap;
+  color: var(--nb-black);
+  text-transform: uppercase;
+  text-shadow: none;
 }
 
 .title-icon {
-  margin-right: 8px;
+  margin-right: 10px;
   font-size: 28px;
-  color: #ffd700;
+  color: var(--nb-black);
 }
 
 .el-menu-demo {
-  background-color: transparent;
-  border-bottom: none;
   flex: 1;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  border-bottom: none;
+  background-color: transparent;
 }
 
-.el-menu-demo .el-menu-item {
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 500;
-  font-size: 16px;
-  padding: 0 24px;
-  margin: 0 8px;
-  border-radius: 8px;
-  border-bottom: 3px solid transparent;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  position: relative;
-  overflow: hidden;
-}
-
-.el-menu-demo .el-menu-item:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s ease;
-}
-
-.el-menu-demo .el-menu-item:hover:before {
-  left: 100%;
-}
-
-.el-menu-demo .el-menu-item:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.el-menu-demo .el-menu-item.is-active {
-  background-color: rgba(255, 255, 255, 0.25);
-  color: white;
-  border-bottom-color: #ffd700;
-  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
-  transform: translateY(-1px);
-}
-
-.el-menu-demo .el-menu-item .el-icon {
-  font-size: 18px;
-  margin-right: 4px;
+/* Menu Items are handled globally in main.css, but we add some spacing here */
+:deep(.el-menu-item) {
+  margin: 0 5px;
+  height: 40px;
+  line-height: 40px;
 }
 
 .app-main {
-  padding: 20px;
+  padding: 40px 20px;
   max-width: 1200px;
   margin: 0 auto;
-  background: linear-gradient(135deg, #e6f7ff 0%, #f0f9ff 100%);
+  background-color: transparent;
   min-height: calc(100vh - 80px);
 }
 
 /* 响应式设计 */
 @media (max-width: 768px) {
   .header-content {
-    padding: 0 10px;
-  }
-  
-  .app-title {
-    margin-right: 20px;
-    font-size: 20px;
-  }
-  
-  .title-icon {
-    font-size: 24px;
-  }
-  
-  .el-menu-demo .el-menu-item {
-    padding: 0 16px;
-    font-size: 14px;
-    margin: 0 4px;
-  }
-  
-  .el-menu-demo .el-menu-item .el-icon {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 576px) {
-  .header-content {
+    padding: 10px;
     flex-direction: column;
     height: auto;
-    padding: 10px;
   }
   
   .app-title {
     margin-right: 0;
-    margin-bottom: 10px;
-    font-size: 18px;
+    margin-bottom: 15px;
+    width: 100%;
+    justify-content: center;
   }
   
   .el-menu-demo {
     width: 100%;
-    justify-content: space-around;
-  }
-  
-  .el-menu-demo .el-menu-item {
-    flex: 1;
-    text-align: center;
-    padding: 10px 8px;
-    margin: 0 2px;
-    font-size: 12px;
-  }
-  
-  .el-menu-demo .el-menu-item .el-icon {
-    font-size: 14px;
-    margin-right: 2px;
-  }
-  
-  .app-main {
-    padding: 10px;
+    overflow-x: auto;
+    justify-content: flex-start;
   }
 }
 </style>

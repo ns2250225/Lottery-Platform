@@ -68,16 +68,29 @@ const viewDetail = () => {
 .raffle-card {
   margin-bottom: 20px;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: all 0.2s;
 }
 
 .raffle-card:hover {
-  transform: translateY(-5px);
+  transform: translate(-4px, -4px);
+}
+
+.raffle-card :deep(.el-card) {
+  border: var(--nb-border);
+  box-shadow: var(--nb-shadow);
+  border-radius: var(--nb-radius);
+  transition: all 0.2s;
+}
+
+.raffle-card:hover :deep(.el-card) {
+  box-shadow: 8px 8px 0px var(--nb-black);
+  border-color: var(--nb-black);
 }
 
 .card-image {
   height: 160px;
   overflow: hidden;
+  border-bottom: var(--nb-border);
 }
 
 .image {
@@ -92,42 +105,48 @@ const viewDetail = () => {
 }
 
 .card-content {
-  padding: 14px;
+  padding: 20px;
+  background-color: var(--nb-white);
 }
 
 .title {
   margin: 0 0 10px;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 1.2rem;
+  font-weight: 900;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-transform: uppercase;
 }
 
 .description {
-  margin: 0 0 12px;
-  font-size: 14px;
-  color: #606266;
-  height: 40px;
+  margin: 0 0 15px;
+  font-size: 1rem;
+  color: var(--nb-black);
+  height: 44px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  line-height: 1.4;
 }
 
 .meta-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px dashed #ddd;
 }
 
 .time {
   display: flex;
   align-items: center;
-  font-size: 12px;
-  color: #909399;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #666;
 }
 
 .time .el-icon {
@@ -137,16 +156,20 @@ const viewDetail = () => {
 .stats {
   display: flex;
   justify-content: space-between;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border: 2px solid var(--nb-black);
 }
 
 .stat-item {
   display: flex;
   align-items: center;
-  font-size: 12px;
-  color: #909399;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--nb-black);
 }
 
 .stat-item .el-icon {
-  margin-right: 4px;
+  margin-right: 6px;
 }
 </style>

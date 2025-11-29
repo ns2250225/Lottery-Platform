@@ -456,10 +456,16 @@ onMounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: 900;
+  font-size: 1.2rem;
 }
 
 .filter-bar {
   margin-bottom: 20px;
+  padding: 20px;
+  background-color: var(--nb-primary);
+  border: var(--nb-border);
+  box-shadow: 4px 4px 0px var(--nb-black);
 }
 
 .filter-form {
@@ -475,6 +481,6 @@ onMounted(() => {
 
 .dialog-footer {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 </style>
