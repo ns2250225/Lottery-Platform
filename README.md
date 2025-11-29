@@ -2,6 +2,12 @@
 
 一个基于 FastAPI + Vue3 + TypeScript 的现代化抽奖系统，提供完整的抽奖活动管理功能。
 
+## 项目截图
+![](./demo/1.jpeg)
+![](./demo/2.jpeg)
+![](./demo/3.jpeg)
+![](./demo/4.jpeg)
+
 ## 项目结构
 
 ```
