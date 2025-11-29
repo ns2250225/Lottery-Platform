@@ -162,7 +162,7 @@ onMounted(() => {
   color: var(--nb-black);
   font-size: 3rem;
   text-transform: uppercase;
-  text-shadow: 4px 4px 0px var(--nb-white);
+  text-shadow: none;
 }
 
 .feature-row {
