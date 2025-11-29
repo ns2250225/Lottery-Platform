@@ -10,8 +10,8 @@
         </div>
       </template>
 
-      <el-descriptions :column="2" border>
-        <el-descriptions-item label="活动描述" :span="2">
+      <el-descriptions :column="descriptionColumns" border>
+        <el-descriptions-item label="活动描述" :span="descriptionColumns">
           {{ raffle.description || '暂无描述' }}
         </el-descriptions-item>
         <el-descriptions-item label="开始时间">
@@ -43,7 +43,7 @@
     </el-card>
 
     <el-row :gutter="20" style="margin-top: 20px">
-      <el-col :span="8">
+      <el-col :xs="24" :sm="24" :md="8">
         <el-card>
           <template #header>
             <span>奖品列表</span>
@@ -55,18 +55,17 @@
           </el-table>
         </el-card>
       </el-col>
-      <el-col :span="8">
+      <el-col :xs="24" :sm="24" :md="8">
         <el-card>
           <template #header>
             <span>参与者列表</span>
           </template>
           <el-table :data="raffle?.participants || []" style="width: 100%">
             <el-table-column prop="name" label="姓名" />
-            <el-table-column prop="phone" label="电话" />
           </el-table>
         </el-card>
       </el-col>
-      <el-col :span="8">
+      <el-col :xs="24" :sm="24" :md="8">
         <el-card>
           <template #header>
             <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -83,8 +82,6 @@
           </template>
           <el-table :data="raffle?.winners || []" style="width: 100%">
             <el-table-column prop="participant.name" label="姓名" />
-            <el-table-column prop="participant.email" label="邮箱" />
-            <el-table-column prop="participant.phone" label="电话" />
             <el-table-column prop="prize.name" label="奖品" />
           </el-table>
         </el-card>
@@ -123,10 +120,7 @@
         />
         <el-table :data="drawResult.winners" style="width: 100%">
           <el-table-column prop="participant.name" label="中奖者" />
-          <el-table-column prop="participant.email" label="邮箱" />
-          <el-table-column prop="participant.phone" label="电话" />
           <el-table-column prop="prize.name" label="奖品" />
-          <el-table-column prop="prize.level" label="奖品等级" />
         </el-table>
       </div>
       <div v-else>
@@ -166,7 +160,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive, onMounted, computed, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { raffleApi, participantApi, winnerApi } from '@/api/modules'
 import { ElMessage, ElMessageBox } from 'element-plus'
@@ -219,6 +213,15 @@ const creatorVerificationDialogVisible = ref(false)
 const participantFormRef = ref()
 const creatorFormRef = ref()
 const currentAction = ref<'start' | 'finish' | 'draw' | ''>('')
+const windowWidth = ref(window.innerWidth)
+
+const updateWindowWidth = () => {
+  windowWidth.value = window.innerWidth
+}
+
+const descriptionColumns = computed(() => {
+  return windowWidth.value < 768 ? 1 : 2
+})
 
 const participantForm = reactive<Participant>({
   name: '',
@@ -508,6 +511,11 @@ const exportWinners = () => {
 
 onMounted(() => {
   fetchRaffleDetail()
+  window.addEventListener('resize', updateWindowWidth)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', updateWindowWidth)
 })
 
 // 导出所有方法和数据
@@ -546,5 +554,35 @@ defineExpose({
 .dialog-footer {
   display: flex;
   justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .action-buttons .el-button {
+    width: 100%;
+    margin: 0 !important;
+  }
+
+  .dialog-footer {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .dialog-footer .el-button {
+    width: 100%;
+    margin-left: 0 !important;
+  }
 }
 </style>

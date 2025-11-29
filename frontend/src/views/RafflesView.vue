@@ -471,6 +471,32 @@ onMounted(() => {
 .filter-form {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .filter-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .el-form-item {
+    margin-right: 0 !important;
+    margin-bottom: 10px;
+  }
+  
+  .el-button {
+    width: 100%;
+    margin-left: 0 !important;
+    margin-bottom: 10px;
+  }
 }
 
 .pagination {

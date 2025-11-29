@@ -6,7 +6,7 @@
     </el-card>
 
     <el-row :gutter="20" class="feature-row">
-      <el-col :span="8">
+      <el-col :xs="24" :sm="24" :md="8">
         <el-card class="feature-card" shadow="hover" @click="navigateTo('/create')">
           <div class="feature-icon">
             <el-icon size="48"><Plus /></el-icon>
@@ -15,7 +15,7 @@
           <p>设置活动信息、奖品和规则，创建您的抽奖活动</p>
         </el-card>
       </el-col>
-      <el-col :span="8">
+      <el-col :xs="24" :sm="24" :md="8">
         <el-card class="feature-card" shadow="hover" @click="navigateTo('/raffles')">
           <div class="feature-icon">
             <el-icon size="48"><Trophy /></el-icon>
@@ -24,7 +24,7 @@
           <p>浏览正在进行中的抽奖活动，填写信息参与抽奖</p>
         </el-card>
       </el-col>
-      <el-col :span="8">
+      <el-col :xs="24" :sm="24" :md="8">
         <el-card class="feature-card" shadow="hover" @click="navigateTo('/history')">
           <div class="feature-icon">
             <el-icon size="48"><Clock /></el-icon>
@@ -237,5 +237,26 @@ onMounted(() => {
   align-items: center;
   font-size: 1.2rem;
   font-weight: 900;
+}
+
+@media (max-width: 768px) {
+  .welcome-card h1 {
+    font-size: 2rem;
+  }
+  
+  .feature-card {
+    height: auto;
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+  
+  .feature-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  :deep(.el-icon) {
+    font-size: 32px !important;
+  }
 }
 </style>

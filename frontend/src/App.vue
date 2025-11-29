@@ -154,15 +154,25 @@ updateActiveIndex()
   
   .app-title {
     margin-right: 0;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     width: 100%;
     justify-content: center;
+    font-size: 20px;
+  }
+  
+  .title-icon {
+    font-size: 24px;
   }
   
   .el-menu-demo {
     width: 100%;
     overflow-x: auto;
-    justify-content: flex-start;
+    justify-content: center;
+    padding-bottom: 5px;
+  }
+
+  .app-main {
+    padding: 20px 10px;
   }
 }
 </style>

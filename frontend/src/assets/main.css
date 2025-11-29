@@ -215,3 +215,32 @@ h1 {
   font-size: 2.5rem;
   text-shadow: 3px 3px 0px var(--nb-secondary);
 }
+
+/* Mobile Global Overrides */
+@media (max-width: 768px) {
+  .el-card {
+    box-shadow: 4px 4px 0px var(--nb-black) !important;
+    margin-bottom: 16px;
+  }
+  
+  .el-button {
+    padding: 8px 16px !important;
+    font-size: 14px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .el-dialog {
+    width: 95% !important;
+    box-shadow: 6px 6px 0px var(--nb-black) !important;
+  }
+  
+  .el-message-box {
+    width: 95% !important;
+    border: var(--nb-border) !important;
+    border-radius: var(--nb-radius) !important;
+    box-shadow: 6px 6px 0px var(--nb-black) !important;
+  }
+}

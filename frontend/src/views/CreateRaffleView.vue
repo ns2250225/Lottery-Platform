@@ -68,21 +68,21 @@
               <el-button type="danger" text @click="removePrize(index)">删除</el-button>
             </div>
           </template>
-          <el-form :model="prize" label-width="80px">
+          <el-form :model="prize" label-width="80px" label-position="top">
             <el-row :gutter="20">
-              <el-col :span="8">
+              <el-col :xs="24" :sm="24" :md="8">
                 <el-form-item label="奖品名称">
                   <el-input v-model="prize.name" placeholder="请输入奖品名称" />
                 </el-form-item>
               </el-col>
-              <el-col :span="8">
+              <el-col :xs="24" :sm="12" :md="8">
                 <el-form-item label="奖品数量">
-                  <el-input-number v-model="prize.quantity" :min="1" />
+                  <el-input-number v-model="prize.quantity" :min="1" style="width: 100%" />
                 </el-form-item>
               </el-col>
-              <el-col :span="8">
+              <el-col :xs="24" :sm="12" :md="8">
                 <el-form-item label="奖品等级">
-                  <el-input-number v-model="prize.level" :min="1" />
+                  <el-input-number v-model="prize.level" :min="1" style="width: 100%" />
                 </el-form-item>
               </el-col>
             </el-row>
@@ -283,5 +283,35 @@ const submitForm = async () => {
   border-radius: var(--nb-radius);
   margin-bottom: 20px;
   background-color: #f9f9f9;
+}
+
+@media (max-width: 768px) {
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .section-title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .prize-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-actions .el-button {
+    width: 100%;
+    margin-left: 0 !important;
+  }
 }
 </style>
