@@ -45,6 +45,7 @@
       
       <el-table :data="recentRaffles" style="width: 100%" v-loading="loading">
         <el-table-column prop="title" label="活动名称" />
+        <el-table-column prop="description" label="活动描述" show-overflow-tooltip />
         <el-table-column prop="status" label="状态" width="120">
           <template #default="scope">
             <el-tag :type="getStatusType(scope.row.status)">
@@ -80,6 +81,7 @@ import dayjs from 'dayjs'
 interface Raffle {
   id: number
   title: string
+  description: string
   status: string
   created_at: string
 }
