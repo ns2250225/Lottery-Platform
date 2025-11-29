@@ -175,6 +175,8 @@ interface Raffle {
   start_time: string
   end_time: string
   created_at: string
+  creator_name: string
+  creator_contact: string
   prizes?: any[]
   participants?: any[]
   winners?: any[]
@@ -212,7 +214,7 @@ const drawResultDialogVisible = ref(false)
 const creatorVerificationDialogVisible = ref(false)
 const participantFormRef = ref()
 const creatorFormRef = ref()
-const currentAction = ref<'start' | 'finish' | 'draw' | ''>('')
+const currentAction = ref<'start' | 'finish' | 'draw' | 'export' | ''>('')
 const windowWidth = ref(window.innerWidth)
 
 const updateWindowWidth = () => {
@@ -302,6 +304,8 @@ const getCreatorActionTitle = () => {
       return '结束活动验证'
     case 'draw':
       return '执行抽奖验证'
+    case 'export':
+      return '导出名单验证'
     default:
       return '创建人验证'
   }
@@ -315,6 +319,8 @@ const getCreatorActionAlert = () => {
       return '请输入抽奖活动的创建人信息以验证结束权限'
     case 'draw':
       return '请输入抽奖活动的创建人信息以验证抽奖权限'
+    case 'export':
+      return '请输入抽奖活动的创建人信息以验证导出权限'
     default:
       return '请输入抽奖活动的创建人信息以验证权限'
   }
@@ -328,6 +334,8 @@ const getConfirmButtonText = () => {
       return '确认结束'
     case 'draw':
       return '确认抽奖'
+    case 'export':
+      return '确认导出'
     default:
       return '确认'
   }
@@ -438,12 +446,22 @@ const confirmCreatorAction = async () => {
           drawResult.winners = result.winners || []
           drawResult.message = result.message || ''
           drawResultDialogVisible.value = true
+        } else if (currentAction.value === 'export') {
+          // 导出名单（前端验证）
+          if (creatorData.creator_name !== raffle.value!.creator_name || 
+              creatorData.creator_contact !== raffle.value!.creator_contact) {
+            throw new Error('创建人信息验证失败，无权导出名单')
+          }
+          doExportWinners()
+          return // 导出不需要刷新数据
         }
         
         fetchRaffleDetail() // 刷新数据
       } catch (error: any) {
         console.error('操作失败:', error)
-        ElMessage.error(error.response?.data?.detail || '操作失败')
+        // 如果是 Error 对象（前端抛出的错误），直接显示 message
+        const errorMessage = error instanceof Error ? error.message : (error.response?.data?.detail || '操作失败')
+        ElMessage.error(errorMessage)
       }
     }
   })
@@ -461,7 +479,7 @@ const drawRaffle = async () => {
   currentAction.value = 'draw'
 }
 
-const exportWinners = () => {
+const doExportWinners = () => {
   if (!raffle.value?.winners || raffle.value.winners.length === 0) {
     ElMessage.warning('暂无中奖者数据可导出')
     return
@@ -507,6 +525,23 @@ const exportWinners = () => {
     console.error('导出失败:', error)
     ElMessage.error('导出失败，请重试')
   }
+}
+
+const exportWinners = () => {
+  if (!raffle.value?.winners || raffle.value.winners.length === 0) {
+    ElMessage.warning('暂无中奖者数据可导出')
+    return
+  }
+
+  // 重置创建人验证表单
+  creatorForm.creator_name = ''
+  creatorForm.creator_contact = ''
+  
+  // 显示创建人验证对话框
+  creatorVerificationDialogVisible.value = true
+  
+  // 记录当前操作类型
+  currentAction.value = 'export'
 }
 
 onMounted(() => {
